@@ -16,12 +16,12 @@ pipeline{
           echo 'deploying the application...'
         }
     }
-    stage('Sonarqube') {
+    stage('SonarQube') {
     environment {
         scannerHome = tool 'SonarQube'
     }
     steps {
-        withSonarQubeEnv('sonarqube') {
+        withSonarQubeEnv('SonarQube') {
             sh "${scannerHome}/bin/sonar-scanner"
         }
         timeout(time: 10, unit: 'MINUTES') {
