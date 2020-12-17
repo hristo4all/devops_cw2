@@ -1,7 +1,9 @@
-FROM node:12 
+FROM node
 RUN npm install 
-COPY . . 
+COPY server.js
 EXPOSE 8080
-CMD ["node", "server.js" ]
+HEALTHCHECK --interval=5s \
+            --timeout=5s \
+            CMD curl -f http://127.0.0.1:8080 || exit 1
 
 
