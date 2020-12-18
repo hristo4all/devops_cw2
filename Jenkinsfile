@@ -6,7 +6,7 @@ stages {
    steps {
        script {
        def scannerHome = tool 'SonerQube';
-           withSonarQubeEnv("sonarqube-container") {
+           withSonarQubeEnv("SonarQube") {
            sh "${tool("sonarqube")}/bin/sonar-scanner \
            -Dsonar.projectKey=test-node-js \
            -Dsonar.sources=. \
