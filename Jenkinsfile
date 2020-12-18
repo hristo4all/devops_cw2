@@ -11,7 +11,7 @@ stages {
            stages { 
         stage('Cloning our Git') { 
             steps { 
-                git 'https://github.com/YourGithubAccount/YourGithubRepository.git' 
+                git 'https://github.com/hristo4all/devops_cw2.git' 
             }
         } 
         stage('Building our image') { 
