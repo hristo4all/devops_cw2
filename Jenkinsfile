@@ -1,8 +1,30 @@
 pipeline {
+       environment { 
+        registry = "https://hub.docker.com/repository/docker/hristo4all/cw2" 
+        registryCredential = 'docker-hub-credentials' 
+        dockerImage = '' 
+    }
+
 agent any
 tools {nodejs "server.js"}
 stages {
+        stage('Building our image') { 
 
+            steps { 
+                script { 
+                    dockerImage = docker.build registry + ":$BUILD_NUMBER" 
+                }
+            } 
+        }
+           stage('Deploy our image') { 
+            steps { 
+                script { 
+                    docker.withRegistry( '', registryCredential ) { 
+                        dockerImage.push() 
+                    }
+                } 
+            }
+        } 
    stage('Code Quality Check via SonarQube') {
    steps {
        script {
