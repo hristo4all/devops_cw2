@@ -16,18 +16,27 @@ pipeline{
           echo 'deploying the application...'
         }
     }
-    stage('SonarQube') {
-    environment {
-        scannerHome = tool 'SonarQube'
-    }
-    steps {
-        withSonarQubeEnv('SonarQube') {
-            sh "${scannerHome}/bin/sonar-scanner"
-        }
-        timeout(time: 10, unit: 'MINUTES') {
-            waitForQualityGate abortPipeline: true
-        }
-    }
+stage('Code Quality Check via SonarQube') {
+   steps {
+       script {
+       def scannerHome = tool 'sonarqube';
+           withSonarQubeEnv("sonarqube-container") {
+           sh "${tool("sonarqube")}/bin/sonar-scanner \
+           -Dsonar.projectKey=test-node-js \
+           -Dsonar.sources=. \
+           -Dsonar.css.node=. \
+           -Dsonar.host.url=http://3.238.239.24:9000 \
+           -Dsonar.login=47e7c5e838953d9b3faf409ae4dcaaeb61b8f9d8"
+               }
+           }
+       }
+  stage("Install Project Dependencies") {
+   steps {
+       nodejs(nodeJSInstallationName: 'nodenv'){
+           sh "npm install"
+           }
+       }
+   }
 }
   }
 }
