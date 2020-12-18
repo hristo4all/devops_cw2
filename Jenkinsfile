@@ -1,6 +1,6 @@
 pipeline {
        environment { 
-        registry = "https://hub.docker.com/repository/docker/hristo4all/cw2" 
+        registry = "hristo4all/cw2" 
         registryCredential = 'docker-hub-credentials' 
         dockerImage = '' 
     }
