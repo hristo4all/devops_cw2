@@ -11,7 +11,7 @@ stages {
            -Dsonar.projectKey=test-node-js \
            -Dsonar.sources=. \
            -Dsonar.css.node=. \
-           -Dsonar.host.url=http://3.238.239.24:9000
+           -Dsonar.host.url=http://3.238.239.24:9000\
            -Dsonar.login=your-generated-token-from-sonarqube-container"
                }
            }
