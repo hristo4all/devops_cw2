@@ -30,6 +30,7 @@ stage('Code Quality Check via SonarQube') {
                }
            }
        }
+}
   stage("Install Project Dependencies") {
    steps {
        nodejs(nodeJSInstallationName: 'nodenv'){
