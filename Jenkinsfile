@@ -8,7 +8,7 @@ pipeline {
 agent any
 tools {nodejs "server.js"}
 stages {
-           stages { 
+        
         stage('Cloning our Git') { 
             steps { 
                 git 'https://github.com/hristo4all/devops_cw2.git' 
@@ -44,6 +44,6 @@ stages {
                }
            }
        }
-   }
+   
 }
 }
