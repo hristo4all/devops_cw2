@@ -8,6 +8,12 @@ pipeline {
 agent any
 tools {nodejs "server.js"}
 stages {
+           stages { 
+        stage('Cloning our Git') { 
+            steps { 
+                git 'https://github.com/YourGithubAccount/YourGithubRepository.git' 
+            }
+        } 
         stage('Building our image') { 
 
             steps { 
