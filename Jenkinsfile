@@ -9,11 +9,9 @@ agent any
 tools {nodejs "server.js"}
 stages {
         
-        stage('Cloning our Git') { 
-            steps { 
-                git 'https://github.com/hristo4all/devops_cw2.git' 
-            }
-        } 
+stage('Checkout') {
+       git branch: 'main', credentialsId: 'f7d5e9e4-f086-43a5-98ec-ecd7780e4050', url: 'git@github.com:jenkinsci/maven-plugin.git'
+   }
         stage('Building our image') { 
 
             steps { 
