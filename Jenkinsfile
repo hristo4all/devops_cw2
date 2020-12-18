@@ -1,6 +1,6 @@
 pipeline {
 agent any
-tools {nodejs "nodenv"}
+tools {nodejs "server.js"}
 stages {
    stage('Code Quality Check via SonarQube') {
    steps {
