@@ -10,7 +10,10 @@ tools {nodejs "server.js"}
 stages {
         
 stage('Checkout') {
+       steps{
        git branch: 'main', credentialsId: 'f7d5e9e4-f086-43a5-98ec-ecd7780e4050', url: 'https://github.com/hristo4all/devops_cw2.git'
+       }
+       
    }
         stage('Building our image') { 
 
