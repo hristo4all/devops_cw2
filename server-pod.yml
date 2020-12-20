@@ -6,6 +6,6 @@ spec:
    containers:
    - name: server-container
     image: hristo4all/cw:36
-    ports:
+    ports: 8080
 containerPort: 7500
-   imagePullPolicy: Always
+   imagePullPolicy: Never
