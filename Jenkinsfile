@@ -15,7 +15,7 @@ stage('Checkout') {
        }
        
    }
-        stage('Building our image') { 
+        stage('Building Image') { 
 
             steps { 
                 script { 
@@ -23,7 +23,7 @@ stage('Checkout') {
                 }
             } 
         }
-           stage('Deploy our image') { 
+           stage('Deploy Image') { 
             steps { 
                 script { 
                     docker.withRegistry( '', registryCredential ) { 
@@ -38,7 +38,7 @@ stage('Checkout') {
        def scannerHome = tool 'SonarQube';
            withSonarQubeEnv("SonarQube") {
            sh "${tool("SonarQube")}/bin/sonar-scanner \
-           -Dsonar.projectKey=test-node-js \
+           -Dsonar.projectKey=test-server-js \
            -Dsonar.sources=.\
            -Dsonar.host.url=http://3.236.97.199:9000/ \
            -Dsonar.login=11e96d88f51f7712dd890028ae9f5040f3b5256f"
