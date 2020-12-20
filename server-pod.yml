@@ -1,11 +1,20 @@
-apiVersion: v1
-kind: Pod
+apiVersion: apps/v1
+kind: Deployment
 metadata:
-   name: server-pod
+  name: server-dep
 spec:
-   containers:
-   - name: server-container
-    image: hristo4all/cw:36
-    ports: 8080
-containerPort: 7500
-   imagePullPolicy: Never
+  replicas: 4
+  selector:
+    matchLabels:
+      app: server
+  template:
+    metadata:
+      labels:
+        app: server
+    spec:
+      containers:
+      - name: server-container
+        image: hristo4all/cw2:36
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 80
