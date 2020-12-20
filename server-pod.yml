@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Pod
+metadata:
+   name: server-pod
+spec:
+   containers:
+   - name: server-container
+    image: hristo4all/cw:36
+    ports:
+containerPort: 7500
+   imagePullPolicy: Always
